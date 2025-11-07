@@ -4,33 +4,36 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Tabbed pages in CSS</title>
-		<style>
-			input.tab[type="radio"] {
-				visibility: hidden;
-				&:checked + .tab-panel {
-					display: inherit;
-				}
-			}
-			.tab-panel {
-				display: none;
-			}
-		</style>
+		<link rel="stylesheet" href="styles.css">
+		<link rel="stylesheet" href="tabs.css">
 	</head>
 	<body>
+		<nav>
+			<br> &emsp;
+			<a href="/accordion.html">Accordion</a> &emsp; | &emsp;
+			<a href="/tabs.html">Tabs</a> &emsp; | &emsp;
+			<a href="/tooltip-popup.html">Tooltip Popup</a>
+			<br>
+		</nav>
+
 		<h1>Tabbed pages in CSS</h1>
+
 		<div class="tab-set">
 			<label for="tab-1" class="tab">Page 1</label> |
 			<label for="tab-2" class="tab">Page 2</label> |
 			<label for="tab-3" class="tab">Page 3</label>
 		</div>
+
 		<input type="radio" name="pagetab" id="tab-1" class="tab" aria-controls="page-1" checked>
 		<section id="page-1" class="tab-panel">
 			<h1>1 One</h1>
 		</section>
+
 		<input type="radio" name="pagetab" id="tab-2" class="tab" aria-controls="page-2">
 		<section id="page-2" class="tab-panel">
 			<h1>2 Two</h1>
 		</section>
+
 		<input type="radio" name="pagetab" id="tab-3" class="tab" aria-controls="page-3">
 		<section id="page-3" class="tab-panel">
 			<h1>3 Three</h1>

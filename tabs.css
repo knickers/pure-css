@@ -1,0 +1,9 @@
+input.tab[type="radio"] {
+	visibility: hidden;
+	&:checked + .tab-panel {
+		display: inherit;
+	}
+}
+.tab-panel {
+	display: none;
+}

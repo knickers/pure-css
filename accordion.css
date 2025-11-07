@@ -1,0 +1,16 @@
+:root {
+	--accordion-transition: 0.3s;
+}
+section.accordion {
+	max-height: 0;
+	position: relative;
+	overflow: hidden;
+	transition: max-height var(--accordion-transition) ease;
+}
+input.accordion {
+	display: none;
+	&:checked + .accordion {
+		max-height: 74px; /* TODO HOW TO NOT HARD CODE THIS!?!?! */
+		transition: max-height var(--accordion-transition) ease;
+	}
+}

@@ -1,0 +1,75 @@
+:root {
+	--tooltip-transition: 0.3s;
+}
+.tooltip {
+	position: relative;
+	&::before, &::after, .popup {
+		position: absolute;
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity var(--tooltip-transition) ease,
+			visibility var(--tooltip-transition) step-end;
+	}
+	&:hover::before, &:hover::after, &:hover .popup {
+		opacity: 1;
+		visibility: visible;
+		transition: opacity var(--tooltip-transition) ease,
+			visibility 0s; /* no delay when showing */
+	}
+	&:not(:has(.popup))::before {
+		content: attr(data-content);
+	}
+	&.top::before,    &.top::after,    &:has(.top.popup)::after,    .top { bottom: 100%; }
+	&.right::before,  &.right::after,  &:has(.right.popup)::after,  .right { left: 100%; }
+	&.bottom::before, &.bottom::after, &:has(.bottom.popup)::after, .bottom { top: 100%; }
+	&.left::before,   &.left::after,   &:has(.left.popup)::after,   .left { right: 100%; }
+	&.center::before, &.center::after, &:has(.center.popup)::after, .center { left: 50%; transform: translateX(-50%); }
+	&.middle::before, &.middle::after, &:has(.middle.popup)::after, .middle {  top: 50%; transform: translateY(-50%);
+		&.center { transform: translate(-50%, -50%); }
+	}
+	&.bubble {
+		border-bottom: 1px dotted #000;
+		a { color: #ccf }
+		&::before, .popup {
+			padding: 10px;
+			border-radius: 10px;
+			background: #000b;
+			color: #fff;
+		}
+		&::after {
+			content: "";
+			border: 10px solid;
+		}
+		&.top::before,    .top { margin-bottom: 15px; }
+		&.right::before,  .right { margin-left: 15px; }
+		&.bottom::before, .bottom { margin-top: 15px; }
+		&.left::before,   .left { margin-right: 15px; }
+		/* The arrows */
+		&:has(.top.popup)::after, &.top::after {
+			margin-bottom: -5px;
+			border-color: #000b transparent transparent transparent;
+		}
+		&:has(.right.popup)::after, &.right::after {
+			margin-left: -5px;
+			border-color: transparent #000b transparent transparent;
+		}
+		&:has(.bottom.popup)::after, &.bottom::after {
+			margin-top: -5px;
+			border-color: transparent transparent #000b transparent;
+		}
+		&:has(.left.popup)::after, &.left::after {
+			margin-right: -5px;
+			border-color: transparent transparent transparent #000b;
+		}
+		&:has(.left.popup)::after {
+			margin-right: -4px;
+		}
+	}
+}
+.box {
+	background-color: white;
+	border: 1px solid;
+	padding: 5px;
+}
+table { text-align: center; margin: 0 auto; }
+td { padding: 10px; border: 1px solid; }

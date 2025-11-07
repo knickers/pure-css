@@ -4,86 +4,20 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Popups and Tooltips in CSS</title>
-		<style>
-			:root {
-				--tooltip-transition: 0.3s;
-			}
-			.tooltip {
-				position: relative;
-				&::before, &::after, .popup {
-					position: absolute;
-					opacity: 0;
-					visibility: hidden;
-					transition: opacity var(--tooltip-transition) ease,
-						visibility var(--tooltip-transition) step-end;
-				}
-				&:hover::before, &:hover::after, &:hover .popup {
-					opacity: 1;
-					visibility: visible;
-					transition: opacity var(--tooltip-transition) ease,
-						visibility 0s; /* no delay when showing */
-				}
-				&:not(:has(.popup))::before {
-					content: attr(data-content);
-				}
-				&.top::before,    &.top::after,    &:has(.top.popup)::after,    .top { bottom: 100%; }
-				&.right::before,  &.right::after,  &:has(.right.popup)::after,  .right { left: 100%; }
-				&.bottom::before, &.bottom::after, &:has(.bottom.popup)::after, .bottom { top: 100%; }
-				&.left::before,   &.left::after,   &:has(.left.popup)::after,   .left { right: 100%; }
-				&.center::before, &.center::after, &:has(.center.popup)::after, .center { left: 50%; transform: translateX(-50%); }
-				&.middle::before, &.middle::after, &:has(.middle.popup)::after, .middle {  top: 50%; transform: translateY(-50%);
-					&.center { transform: translate(-50%, -50%); }
-				}
-				&.bubble {
-					border-bottom: 1px dotted #000;
-					a { color: #ccf }
-					&::before, .popup {
-						padding: 10px;
-						border-radius: 10px;
-						background: #000b;
-						color: #fff;
-					}
-					&::after {
-						content: "";
-						border: 10px solid;
-					}
-					&.top::before,    .top { margin-bottom: 15px; }
-					&.right::before,  .right { margin-left: 15px; }
-					&.bottom::before, .bottom { margin-top: 15px; }
-					&.left::before,   .left { margin-right: 15px; }
-					/* The arrows */
-					&:has(.top.popup)::after, &.top::after {
-						margin-bottom: -5px;
-						border-color: #000b transparent transparent transparent;
-					}
-					&:has(.right.popup)::after, &.right::after {
-						margin-left: -5px;
-						border-color: transparent #000b transparent transparent;
-					}
-					&:has(.bottom.popup)::after, &.bottom::after {
-						margin-top: -5px;
-						border-color: transparent transparent #000b transparent;
-					}
-					&:has(.left.popup)::after, &.left::after {
-						margin-right: -5px;
-						border-color: transparent transparent transparent #000b;
-					}
-					&:has(.left.popup)::after {
-						margin-right: -4px;
-					}
-				}
-			}
-			.box {
-				background-color: white;
-				border: 1px solid;
-				padding: 5px;
-			}
-			table { text-align: center; margin: 0 auto; }
-			td { padding: 10px; border: 1px solid; }
-		</style>
+		<link rel="stylesheet" href="styles.css">
+		<link rel="stylesheet" href="tooltip-popup.css">
 	</head>
 	<body>
+		<nav>
+			<br> &emsp;
+			<a href="/accordion.html">Accordion</a> &emsp; | &emsp;
+			<a href="/tabs.html">Tabs</a> &emsp; | &emsp;
+			<a href="/tooltip-popup.html">Tooltip Popup</a>
+			<br>
+		</nav>
+
 		<h1>Popups</h1>
+
 		<table>
 			<tr>
 				<td class="tooltip"><span class="popup box top left">I'm here!</span>Top Left</td>
@@ -101,8 +35,11 @@
 				<td class="tooltip"><span class="popup box bottom right">I'm here!</span>Bottom Right</td>
 			</tr>
 		</table>
+
 		<br/>
+
 		<h1>Bubble styled tooltips</h1>
+
 		<p>
 			Tooltip aligned to the
 			<span class="tooltip bubble center top" data-content="Unbelievably beautiful mountains">top</span>
@@ -122,25 +59,29 @@
 		<p>
 			HTML embedded tooltip on the
 			<span class="tooltip bubble">
-				<span class="popup top center">Find out more<a href="https://example.com">here</a></span>top
+				<span class="popup top center">Find out more <a href="https://example.com">here</a></span>
+				top
 			</span>
 		</p>
 		<p>
 			HTML embedded tooltip on the
 			<span class="tooltip bubble">
-				<span class="popup right middle">Find out more<a href="https://example.com">here</a></span>right
+				<span class="popup right middle">Find out more <a href="https://example.com">here</a></span>
+				right
 			</span>
 		</p>
 		<p>
 			HTML embedded tooltip on the
 			<span class="tooltip bubble">
-				<span class="popup bottom center">Find out more<a href="https://example.com">here</a></span>bottom
+				<span class="popup bottom center">Find out more <a href="https://example.com">here</a></span>
+				bottom
 			</span>
 		</p>
 		<p>
 			HTML embedded tooltip on the
 			<span class="tooltip bubble">
-				<span class="popup left middle">Find out more<a href="https://example.com">here</a></span>left
+				<span class="popup left middle">Find out more <a href="https://example.com">here</a></span>
+				left
 			</span>
 		</p>
 	</body>
