@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Accordion in CSS</title>
+		<style>
+			:root {
+				--accordion-transition: 0.5s;
+			}
+			section.accordion {
+				max-height: 0;
+				position: relative;
+				overflow: hidden;
+				transition: max-height var(--accordion-transition) ease;
+			}
+			input.accordion {
+				display: none;
+				&:checked + .accordion {
+					max-height: 74px; /* TODO HOW TO NOT HARD CODE THIS!?!?! */
+					transition: max-height var(--accordion-transition) ease;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Accordion in CSS</h1>
+		<label for="accordion-1">Section 1</label>
+		<input type="radio" name="accordion" id="accordion-1" class="accordion" aria-controls="section-1" checked>
+		<section id="section-1" class="accordion">
+			<h1>1 One</h1>
+		</section>
+		<label for="accordion-2">Section 2</label>
+		<input type="radio" name="accordion" id="accordion-2" class="accordion" aria-controls="section-2">
+		<section id="section-2" class="accordion">
+			<h1>2 Two</h1>
+		</section>
+		<label for="accordion-3">Section 3</label>
+		<input type="radio" name="accordion" id="accordion-3" class="accordion" aria-controls="section-3">
+		<section id="section-3" class="accordion">
+			<h1>3 Three</h1>
+		</section>
+	</body>
+</html>
